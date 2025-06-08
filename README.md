@@ -1,5 +1,5 @@
 ===============================
-Sistema de Seleção - Univ. Stark
+Sistema de Seleção
 ===============================
 
 Este projeto simula o sistema de seleção de candidatos da Universidade Stark, com base em critérios definidos de pontuação e prioridade de curso.
