@@ -64,6 +64,6 @@ Simular um sistema automatizado e justo de seleção universitária, respeitando
 -------------------------------
 👥 Desenvolvido por
 -------------------------------
-João Victor Soares Souza - Sistemas de Informação
-João Victor Fróis - Sistemas de Informação
-Lucas Gabriel Ferreira - Sistemas de Informação 
+- João Victor Soares Souza - Sistemas de Informação
+- João Victor Fróis - Sistemas de Informação
+- Lucas Gabriel Ferreira - Sistemas de Informação 
