@@ -1,0 +1,26 @@
+✅ PARTE 1 – ESTRUTURAS DE DADOS E REGRAS DE NEGÓCIO  
+👤 Responsável: Fróis - (12/06)
+
+📌 Responsabilidades:
+- Criar classes de domínio:
+  • Curso (código, nome, vagas, (class list<>)lista de selecionados, (class fila)fila de espera)  ✅
+  • Candidato (nome, notas, opções de curso, média, cálculo de média)  ✅
+
+- Comparações e ordenações:
+  • Comparador de candidatos (por média, depois por nota da redação)  
+  • Método para ordenar listas de candidatos (algoritmo eficiente)
+
+- Implementação da Fila Flexível:
+  • Celula  ✅
+  • FilaFlexivel com métodos: enfileirar, desenfileirar, listar ✅
+
+📎 Obs: Esta parte constrói o alicerce de tudo: estrutura + ordenação + regras de comparação.
+
+algortimos de ordenação vistos:
+-seleção
+-bolha *
+-inserção *
+-quick
+-merge
+-counting *
+-heap
