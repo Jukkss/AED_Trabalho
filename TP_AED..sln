@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_AED", "..\..\..\..\source\repos\TP_AED\TP_AED\TP_AED.csproj", "{2FFD8158-4D44-491B-A1BD-D1B5CA541098}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_AED", "..\..\..\..\..\source\repos\TP_AED\TP_AED\TP_AED.csproj", "{2FFD8158-4D44-491B-A1BD-D1B5CA541098}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

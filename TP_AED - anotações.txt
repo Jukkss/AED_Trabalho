@@ -7,8 +7,8 @@
   • Candidato (nome, notas, opções de curso, média, cálculo de média)  ✅
 
 - Comparações e ordenações:
-  • Comparador de candidatos (por média, depois por nota da redação)  
-  • Método para ordenar listas de candidatos (algoritmo eficiente)
+  • Comparador de candidatos (por média, depois por nota da redação)  ✅
+  • Método para ordenar listas de candidatos (algoritmo eficiente)✅
 
 - Implementação da Fila Flexível:
   • Celula  ✅
@@ -16,11 +16,16 @@
 
 📎 Obs: Esta parte constrói o alicerce de tudo: estrutura + ordenação + regras de comparação.
 
-algortimos de ordenação vistos:
--seleção
--bolha *
--inserção *
--quick
--merge
--counting *
--heap
+
+
+Anotações:
+
+-A ordenação está sendo feita em um vetor para depois a lista ser preenchida já da forma correta.
+
+-Método de Inserção:
+->Estou usando um switch para ter duas formas de ordenar o meu vetor, já que os itens precisarão estar ordenados em duas 
+grandezas.
+->Case 1: ordena os elementos de acordo com a média, as maiores médias vão para o ínicio do meu vetor
+->Case 2: ordena os elementos de acordo com a nota da redação, as maiores notas vão para o ínicio do meu vetor
+
+-Criei um método "PreencherLista", para preencher a lista com os objetos já ordenados.
