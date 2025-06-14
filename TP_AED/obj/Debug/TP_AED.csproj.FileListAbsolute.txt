@@ -1,0 +1,2 @@
+C:\Users\BT Gaming Store\source\repos\TP_AED\TP_AED\obj\Debug\TP_AED.csproj.AssemblyReference.cache
+C:\Users\BT Gaming Store\source\repos\TP_AED\TP_AED\obj\Debug\TP_AED.csproj.CoreCompileInputs.cache
