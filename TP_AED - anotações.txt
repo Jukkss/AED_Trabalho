@@ -13,7 +13,10 @@
 - Implementação da Fila Flexível:
   • Celula  ✅
   • FilaFlexivel com métodos: enfileirar, desenfileirar, listar ✅
+<<<<<<< HEAD
 
+=======
+>>>>>>> 50256b92e58914979a7b24e09b8a2ed471602aed
 Anotações:
 ->A ordenação está sendo feita em um vetor para depois a lista ser preenchida já da forma correta.
 ->Método de Inserção:
