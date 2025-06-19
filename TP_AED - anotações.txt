@@ -14,8 +14,6 @@
   • Celula  ✅
   • FilaFlexivel com métodos: enfileirar, desenfileirar, listar ✅
 
-📎 Obs: Esta parte constrói o alicerce de tudo: estrutura + ordenação + regras de comparação.
-
 Anotações:
 ->A ordenação está sendo feita em um vetor para depois a lista ser preenchida já da forma correta.
 ->Método de Inserção:
@@ -41,8 +39,6 @@ grandezas.
     - Inserir na fila de espera se não for selecionado  
     - Liberar 2ª opção se for aprovado na 1ª
 
-📎 Obs: Parte focada na entrada e aplicação das regras de seleção conforme o edital.
-
 
 ✅ PARTE 3 – SAÍDA E APRESENTAÇÃO  
 👤 Responsável: Soares - (20/06)
@@ -60,5 +56,3 @@ grandezas.
     - Lista de “Selecionados”  
     - Lista da “Fila de Espera”  
     - Linha em branco entre os cursos
-
-📎 Obs: Menos lógica, mas exige atenção ao formato e à clareza da apresentação textual.
