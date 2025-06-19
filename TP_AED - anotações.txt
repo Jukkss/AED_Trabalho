@@ -13,19 +13,49 @@
 - Implementação da Fila Flexível:
   • Celula  ✅
   • FilaFlexivel com métodos: enfileirar, desenfileirar, listar ✅
+<<<<<<< HEAD
 
-📎 Obs: Esta parte constrói o alicerce de tudo: estrutura + ordenação + regras de comparação.
-
-
-
+=======
+>>>>>>> 50256b92e58914979a7b24e09b8a2ed471602aed
 Anotações:
-
--A ordenação está sendo feita em um vetor para depois a lista ser preenchida já da forma correta.
-
--Método de Inserção:
+->A ordenação está sendo feita em um vetor para depois a lista ser preenchida já da forma correta.
+->Método de Inserção:
 ->Estou usando um switch para ter duas formas de ordenar o meu vetor, já que os itens precisarão estar ordenados em duas 
 grandezas.
 ->Case 1: ordena os elementos de acordo com a média, as maiores médias vão para o ínicio do meu vetor
 ->Case 2: ordena os elementos de acordo com a nota da redação, as maiores notas vão para o ínicio do meu vetor
+->Criei um método "PreencherLista", para preencher a lista com os objetos já ordenados.
 
--Criei um método "PreencherLista", para preencher a lista com os objetos já ordenados.
+
+✅ PARTE 2 – ENTRADA, DISTRIBUIÇÃO E LÓGICA DE SELEÇÃO  
+👤 Responsável: Lucas - (16/06)
+
+📌 Responsabilidades:
+- Leitura do arquivo entrada.txt:
+  • Ler cursos → armazenar em Dictionary<int, Curso>  
+  • Ler candidatos → armazenar como objetos Candidato
+
+- Distribuição dos candidatos:
+  • Ordenar candidatos por média e desempate  
+  • Alocar conforme regras:
+    - Verificar 1ª e 2ª opção  
+    - Inserir na fila de espera se não for selecionado  
+    - Liberar 2ª opção se for aprovado na 1ª
+
+
+✅ PARTE 3 – SAÍDA E APRESENTAÇÃO  
+👤 Responsável: Soares - (20/06)
+
+📌 Responsabilidades:
+- Calcular a nota de corte:
+  • Menor média dos selecionados (por curso)
+
+- Organizar listas de saída:
+  • Ordenar fila de espera e selecionados conforme critérios
+
+- Gerar o arquivo saida.txt:
+  • Escrever formato correto:
+    - Nome do curso + nota de corte  
+    - Lista de “Selecionados”  
+    - Lista da “Fila de Espera”  
+    - Linha em branco entre os cursos

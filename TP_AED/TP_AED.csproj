@@ -47,6 +47,7 @@
     <Compile Include="Celula.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="FilaFlexivel.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

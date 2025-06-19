@@ -22,16 +22,17 @@ namespace TP_AED
             get { return prox; }
             set { prox = value; }
         }
+
         public Celula(Candidato candidato)
         {
             elemento = candidato;
             prox = null;
         }
+
         public Celula()
         {
             elemento = null;
             prox = null;
         }
-
     }
 }

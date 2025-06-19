@@ -15,13 +15,11 @@ namespace TP_AED
         private FilaFlexivel filaDeEspera;
         private Candidato[] candidatos;
 
-        
         public int VagasDisponiveis
         {
             get { return vagasDisponiveis; }
             set { vagasDisponiveis = value; }
         }
-
 
         public string Nome
         {
@@ -35,46 +33,34 @@ namespace TP_AED
             set { codigo = value; }
         }
 
-        public void Insercao(Candidato[] candidatos, int op)
+        public List<Candidato> ListaSelecionados
         {
-            int j;
-            Candidato temp;
-            switch (op)
-            {
-                case 1:
-                    for (int i = 1; i < candidatos.Length; i++)
-                    {
-                        temp = candidatos[i];
-                        j = i - 1;
-                        while (j >= 0 && temp.Media > candidatos[j].Media)
-                        {
-                            candidatos[j + 1] = candidatos[j];
-                            j--;
-                        }
-                        candidatos[j + 1] = temp;
-                    }
-                    break;
-                case 2:
-                    for (int i = 1; i < candidatos.Length; i++)
-                    {
-                        temp = candidatos[i];
-                        j = i - 1;
-                        while (j >= 0 && temp.Notas[0] > candidatos[j].Notas[0])
-                        {
-                            candidatos[j + 1] = candidatos[j];
-                            j--;
-                        }
-                        candidatos[j + 1] = temp;
-                    }
-                    break;
-                    
-            }
-        }
-        public void PreencherLista (List<Candidato> listacandidatos, Candidato[]vetCandidatos)
-        {
-            for (int i = 0; i < vetCandidatos.Length;i++)
-                listacandidatos.Add(vetCandidatos[i]);
+            get { return listaSelecionados; }
         }
 
+        public FilaFlexivel FilaDeEspera
+        {
+            get { return filaDeEspera; }
+        }
+
+        public Curso(int codigo, string nome, int vagasDisponiveis)
+        {
+            listaSelecionados = new List<Candidato>();
+            filaDeEspera = new FilaFlexivel();
+            this.codigo = codigo;
+            this.nome = nome;
+            this.vagasDisponiveis = vagasDisponiveis;
+        }
+
+        public void AdicionarSelecionado(Candidato candidato)
+        {
+            listaSelecionados.Add(candidato);
+        }
+
+        public void AdicionarFilaEspera(Candidato candidato)
+        {
+            Celula celula = new Celula(candidato);
+            filaDeEspera.Adicionar(celula);
+        }
     }
 }

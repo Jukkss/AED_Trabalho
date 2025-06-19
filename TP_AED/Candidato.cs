@@ -15,7 +15,10 @@ namespace TP_AED
         private double media;
 
         public double Media
-        { get { return media; } }
+        {
+            get { return media; }
+        }
+
         public int[] OpcoesdeCurso
         {
             get { return opcoesDeCurso; }
