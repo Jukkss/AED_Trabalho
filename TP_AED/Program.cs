@@ -151,6 +151,52 @@ namespace TP_AED
             vet[i] = vet[j];
             vet[j] = temp;
         }
+        static void OrdenarCandidatosQuick(Candidato[] vet)
+        {
+            QuickSort(vet, 0, vet.Length - 1);
+        }
+
+        static double CalcularNotaDeCorte(List<Candidato> selecionados)
+        {
+            if (selecionados.Count == 0)
+                return 0.0;
+
+            double menorMedia = selecionados[0].Media;
+            foreach (Candidato c in selecionados)
+            {
+                if (c.Media < menorMedia)
+                    menorMedia = c.Media;
+            }
+            return menorMedia;
+        }
+        static void GerarArquivoSaida(Dictionary<int, Curso> cursosDic)
+        {
+            StreamWriter sw = new StreamWriter("saida.txt", false, Encoding.UTF8);
+
+            foreach (KeyValuePair<int, Curso> keyValuePair in cursosDic)
+            {
+                Curso curso = keyValuePair.Value;
+
+                Candidato[] selecionados = curso.ListaSelecionados.ToArray();
+                OrdenarCandidatosQuick(selecionados);
+
+                Candidato[] filaEspera = curso.FilaDeEspera.CandidatosEmLista().ToArray();
+                OrdenarCandidatosQuick(filaEspera);
+
+                double notaDeCorte = CalcularNotaDeCorte(curso.ListaSelecionados);
+                sw.WriteLine($"{curso.Nome} {notaDeCorte.ToString("n1")}");
+                sw.WriteLine("Selecionados:");
+                foreach (Candidato c in selecionados)
+                    sw.WriteLine($"{c.Nome} {c.Media.ToString("n1")}");
+
+                sw.WriteLine("Fila de Espera:");
+                foreach (Candidato c in filaEspera)
+                    sw.WriteLine($"{c.Nome} {c.Media.ToString("n1")}");
+
+                sw.WriteLine();
+            }
+            sw.Close();
+        }
 
         static void Main(string[] args)
         {
@@ -173,8 +219,10 @@ namespace TP_AED
                 }
                 Console.WriteLine($"\nFila de Espera:");
                 keyValuePair.Value.FilaDeEspera.Mostrar();
+                Console.WriteLine($"\nNota de corte: {CalcularNotaDeCorte(keyValuePair.Value.ListaSelecionados).ToString("n1")}");
                 Console.WriteLine("------------------\n");
             }
+            GerarArquivoSaida(cursosDic);
             Console.ReadLine();
         }
     }

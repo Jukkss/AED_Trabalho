@@ -37,7 +37,6 @@ namespace TP_AED
             }
             ultimo.Prox = null;
         }
-
         public Celula Remover()
         {
             Celula tmp = primeiro.Prox;
@@ -45,17 +44,24 @@ namespace TP_AED
             tmp.Prox = null;
             return tmp;
         }
-
         public FilaFlexivel()
         {
             primeiro = new Celula();
             ultimo = primeiro;
         }
-
         public void Mostrar()
         {
             for (Celula i = primeiro.Prox; i != null; i = i.Prox)
                 Console.WriteLine($"{i.Elemento.Nome} {i.Elemento.Media.ToString("n1")} {i.Elemento.OpcoesdeCurso[0]} {i.Elemento.OpcoesdeCurso[1]}");
+        }
+        public List<Candidato> CandidatosEmLista()
+        {
+            List<Candidato> lista = new List<Candidato>();
+            for (Celula i = primeiro.Prox; i != null; i = i.Prox)
+            {
+                lista.Add(i.Elemento);
+            }
+            return lista;
         }
     }
 }
