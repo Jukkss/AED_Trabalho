@@ -13,9 +13,6 @@ namespace TP_AED
         private double[] notas = new double[3];
         private int[] opcoesDeCurso = new int[2];
         private double media;
-        //Soares
-        public int IndiceOriginal { get; set; }
-
         public double Media
         {
             get { return media; }
