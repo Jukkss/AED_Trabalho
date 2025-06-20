@@ -112,6 +112,46 @@ namespace TP_AED
             }
         }
 
+        static void QuickSort(Candidato[] vet, int esquerda, int direita)
+        {
+            if (esquerda < direita)
+            {
+                int pivo = Particionar(vet, esquerda, direita);
+                QuickSort(vet, esquerda, pivo - 1);
+                QuickSort(vet, pivo + 1, direita);
+            }
+        }
+        static int Particionar(Candidato[] vet, int esquerda, int direita)
+        {
+            Candidato pivo = vet[direita];
+            int i = esquerda - 1;
+
+            for (int j = esquerda; j < direita; j++)
+            {
+                if (CompararCandidatos(vet[j], pivo) > 0) 
+                {
+                    i++;
+                    Trocar(vet, i, j);
+                }
+            }
+            Trocar(vet, i + 1, direita);
+            return i + 1;
+        }
+        static int CompararCandidatos(Candidato a, Candidato b)
+        {
+            int cmpMedia = a.Media.CompareTo(b.Media);
+            if (cmpMedia != 0)
+                return cmpMedia;
+
+            return a.Notas[0].CompareTo(b.Notas[0]);
+        }
+        static void Trocar(Candidato[] vet, int i, int j)
+        {
+            Candidato temp = vet[i];
+            vet[i] = vet[j];
+            vet[j] = temp;
+        }
+
         static void Main(string[] args)
         {
             Dictionary<int, Curso> cursosDic = LerCursos();
