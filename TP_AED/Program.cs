@@ -111,7 +111,7 @@ namespace TP_AED
                 }
             }
         }
-
+        // Soares
         static void QuickSort(Candidato[] vet, int esquerda, int direita)
         {
             if (esquerda < direita)
@@ -121,6 +121,7 @@ namespace TP_AED
                 QuickSort(vet, pivo + 1, direita);
             }
         }
+        // Soares
         static int Particionar(Candidato[] vet, int esquerda, int direita)
         {
             Candidato pivo = vet[direita];
@@ -137,6 +138,7 @@ namespace TP_AED
             Trocar(vet, i + 1, direita);
             return i + 1;
         }
+        // Soares
         static int CompararCandidatos(Candidato a, Candidato b)
         {
             int cmpMedia = a.Media.CompareTo(b.Media);
@@ -145,17 +147,19 @@ namespace TP_AED
 
             return a.Notas[0].CompareTo(b.Notas[0]);
         }
+        // Soares
         static void Trocar(Candidato[] vet, int i, int j)
         {
             Candidato temp = vet[i];
             vet[i] = vet[j];
             vet[j] = temp;
         }
+        // Soares
         static void OrdenarCandidatosQuick(Candidato[] vet)
         {
             QuickSort(vet, 0, vet.Length - 1);
         }
-
+        // Soares
         static double CalcularNotaDeCorte(List<Candidato> selecionados)
         {
             if (selecionados.Count == 0)
@@ -169,6 +173,7 @@ namespace TP_AED
             }
             return menorMedia;
         }
+        // Soares
         static void GerarArquivoSaida(Dictionary<int, Curso> cursosDic)
         {
             StreamWriter sw = new StreamWriter("saida.txt", false, Encoding.UTF8);
@@ -219,9 +224,11 @@ namespace TP_AED
                 }
                 Console.WriteLine($"\nFila de Espera:");
                 keyValuePair.Value.FilaDeEspera.Mostrar();
+                // Soares
                 Console.WriteLine($"\nNota de corte: {CalcularNotaDeCorte(keyValuePair.Value.ListaSelecionados).ToString("n1")}");
                 Console.WriteLine("------------------\n");
             }
+            // Soares
             GerarArquivoSaida(cursosDic);
             Console.ReadLine();
         }
