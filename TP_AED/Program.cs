@@ -51,8 +51,6 @@ namespace TP_AED
                     linha = lerEntrada.ReadLine();
                     string[] candidato = linha.Split(';');
                     candidatosVet[i] = new Candidato(candidato[0], double.Parse(candidato[1]), double.Parse(candidato[2]), double.Parse(candidato[3]), int.Parse(candidato[4]), int.Parse(candidato[5]));
-                    //Soares
-                    candidatosVet[i].IndiceOriginal = i;
                 }
                 lerEntrada.Close();
 
@@ -114,58 +112,6 @@ namespace TP_AED
             }
         }
         // Soares
-        static void QuickSort(Candidato[] vet, int esquerda, int direita)
-        {
-            if (esquerda < direita)
-            {
-                int pivo = Particionar(vet, esquerda, direita);
-                QuickSort(vet, esquerda, pivo - 1);
-                QuickSort(vet, pivo + 1, direita);
-            }
-        }
-        // Soares
-        static int Particionar(Candidato[] vet, int esquerda, int direita)
-        {
-            Candidato pivo = vet[direita];
-            int i = esquerda - 1;
-
-            for (int j = esquerda; j < direita; j++)
-            {
-                if (CompararCandidatos(vet[j], pivo) > 0) 
-                {
-                    i++;
-                    Trocar(vet, i, j);
-                }
-            }
-            Trocar(vet, i + 1, direita);
-            return i + 1;
-        }
-        // Soares
-        static int CompararCandidatos(Candidato a, Candidato b)
-        {
-            int cmpMedia = b.Media.CompareTo(a.Media);
-            if (cmpMedia != 0)
-                return cmpMedia;
-
-            int cmpNotaRed = b.Notas[0].CompareTo(a.Notas[0]); 
-            if (cmpNotaRed != 0)
-                return cmpNotaRed;
-
-            return a.IndiceOriginal.CompareTo(b.IndiceOriginal); 
-        }
-        // Soares
-        static void Trocar(Candidato[] vet, int i, int j)
-        {
-            Candidato temp = vet[i];
-            vet[i] = vet[j];
-            vet[j] = temp;
-        }
-        // Soares
-        static void OrdenarCandidatosQuick(Candidato[] vet)
-        {
-            QuickSort(vet, 0, vet.Length - 1);
-        }
-        // Soares
         static double CalcularNotaDeCorte(List<Candidato> selecionados)
         {
             if (selecionados.Count == 0)
@@ -188,19 +134,17 @@ namespace TP_AED
             {
                 Curso curso = keyValuePair.Value;
 
-                Candidato[] selecionados = curso.ListaSelecionados.ToArray();
-                OrdenarCandidatosQuick(selecionados);
+                List<Candidato> selecionados = curso.ListaSelecionados;
+                List<Candidato> filaEspera = curso.FilaDeEspera.CandidatosEmLista();
 
-                Candidato[] filaEspera = curso.FilaDeEspera.CandidatosEmLista().ToArray();
-                OrdenarCandidatosQuick(filaEspera);
+                double notaDeCorte = CalcularNotaDeCorte(selecionados);
 
-                double notaDeCorte = CalcularNotaDeCorte(curso.ListaSelecionados);
                 sw.WriteLine($"{curso.Nome} {notaDeCorte.ToString("n1")}");
                 sw.WriteLine("Selecionados:");
                 foreach (Candidato c in selecionados)
                     sw.WriteLine($"{c.Nome} {c.Media.ToString("n1")}");
 
-                sw.WriteLine("Fila de Espera:");    
+                sw.WriteLine("Fila de Espera:");
                 foreach (Candidato c in filaEspera)
                     sw.WriteLine($"{c.Nome} {c.Media.ToString("n1")}");
 
@@ -208,7 +152,6 @@ namespace TP_AED
             }
             sw.Close();
         }
-
         static void Main(string[] args)
         {
             Dictionary<int, Curso> cursosDic = LerCursos();
