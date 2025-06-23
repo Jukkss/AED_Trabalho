@@ -7,3 +7,10 @@ C:\Users\sjuao\OneDrive\Área de Trabalho\Estudos\C#\AED.2°P\TrabalhoAED\TP_AED
 C:\Users\sjuao\OneDrive\Área de Trabalho\Estudos\C#\AED.2°P\TrabalhoAED\TP_AED\obj\Debug\TP_AED.csproj.CoreCompileInputs.cache
 C:\Users\sjuao\OneDrive\Área de Trabalho\Estudos\C#\AED.2°P\TrabalhoAED\TP_AED\obj\Debug\TP_AED.exe
 C:\Users\sjuao\OneDrive\Área de Trabalho\Estudos\C#\AED.2°P\TrabalhoAED\TP_AED\obj\Debug\TP_AED.pdb
+C:\Users\lucsa\Source\Repos\AED_Trabalho\TP_AED\bin\Debug\TP_AED.exe.config
+C:\Users\lucsa\Source\Repos\AED_Trabalho\TP_AED\bin\Debug\TP_AED.exe
+C:\Users\lucsa\Source\Repos\AED_Trabalho\TP_AED\bin\Debug\TP_AED.pdb
+C:\Users\lucsa\Source\Repos\AED_Trabalho\TP_AED\obj\Debug\TP_AED.csproj.AssemblyReference.cache
+C:\Users\lucsa\Source\Repos\AED_Trabalho\TP_AED\obj\Debug\TP_AED.csproj.CoreCompileInputs.cache
+C:\Users\lucsa\Source\Repos\AED_Trabalho\TP_AED\obj\Debug\TP_AED.exe
+C:\Users\lucsa\Source\Repos\AED_Trabalho\TP_AED\obj\Debug\TP_AED.pdb
