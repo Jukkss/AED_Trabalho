@@ -14,16 +14,18 @@ namespace TP_AED
             try
             {
                 StreamReader lerEntrada = new StreamReader("entrada.txt", Encoding.UTF8);
-                string linha = lerEntrada.ReadLine();
-                string[] numeros = linha.Split(';');
+                string linha = lerEntrada.ReadLine(); 
+                string[] numeros = linha.Split(';'); // lê a 1ª linha do arquivo e separa a quantidade de cursos e candidatos
 
                 Dictionary<int, Curso> cursosDic = new Dictionary<int, Curso>();
-
+                
+                // for que percorre as linhas do arquivo de acordo com a quantidade de cursos (posição 0 do vet "numeros")
                 for (int i = 0; i < int.Parse(numeros[0]); i++)
                 {
                     linha = lerEntrada.ReadLine();
-                    string[] curso = linha.Split(';');
-                    cursosDic.Add(int.Parse(curso[0]), new Curso(int.Parse(curso[0]), curso[1], int.Parse(curso[2])));
+                    string[] curso = linha.Split(';'); //lê a linha equivalente ao curso e separa os atributos com split
+                    cursosDic.Add(int.Parse(curso[0]), new Curso(int.Parse(curso[0]), curso[1], int.Parse(curso[2]))); 
+                    // adiciona o código do curso na key do dicionário e cria uma nova classe Curso para adicionar no value
                 }
                 lerEntrada.Close();
                 return cursosDic;
@@ -40,16 +42,19 @@ namespace TP_AED
             {
                 StreamReader lerEntrada = new StreamReader("entrada.txt", Encoding.UTF8);
                 string linha = lerEntrada.ReadLine();
-                string[] numeros = linha.Split(';');
+                string[] numeros = linha.Split(';'); // lê a 1ª linha do arquivo e separa a quantidade de cursos e candidatos
 
-                Candidato[] candidatosVet = new Candidato[int.Parse(numeros[1])];
+                Candidato[] candidatosVet = new Candidato[int.Parse(numeros[1])]; // cria vetor de acordo com o nº de alunos
+                
+                // for que pula as linhas do arquivo de acordo com a quantidade de cursos, já que visamos ler apenas os alunos
                 for (int i = 0; i < int.Parse(numeros[0]); i++)
                     lerEntrada.ReadLine();
 
+                // for que percorre as linhas do arquivo de acordo com a quantidade de alunos (tamanho do vet "candidatosVet)
                 for (int i = 0; i < candidatosVet.Length; i++)
                 {
                     linha = lerEntrada.ReadLine();
-                    string[] candidato = linha.Split(';');
+                    string[] candidato = linha.Split(';'); // lê a linha equivalente ao candidato e separa os atributos
                     candidatosVet[i] = new Candidato(candidato[0], double.Parse(candidato[1]), double.Parse(candidato[2]), double.Parse(candidato[3]), int.Parse(candidato[4]), int.Parse(candidato[5]));
                 }
                 lerEntrada.Close();
@@ -66,29 +71,30 @@ namespace TP_AED
         {
             // Soares
             Quicksort(candidatos,0,candidatos.Length-1);
-
+            
+            // percorre o vetor já ordenado pra preencher as vagas dos cursos de acordo com a disponibilidade de vagas
             foreach (Candidato c in candidatos)
             {
                 Curso op1 = cursosDic[c.OpcoesdeCurso[0]];
                 Curso op2 = cursosDic[c.OpcoesdeCurso[1]];
 
-                if ((op1.VagasDisponiveis > 0) && (op2.VagasDisponiveis > 0))
+                if ((op1.VagasDisponiveis > 0) && (op2.VagasDisponiveis > 0)) // passou nas 2 opções: adiciona só na 1ª
                 {
                     op1.AdicionarSelecionado(c);
                     op1.VagasDisponiveis--;
                 }
-                else if (op1.VagasDisponiveis > 0)
+                else if (op1.VagasDisponiveis > 0) // passou só na 1ª: adiciona só na 1ª
                 {
                     op1.AdicionarSelecionado(c);
                     op1.VagasDisponiveis--;
                 }
-                else if (op2.VagasDisponiveis > 0)
+                else if (op2.VagasDisponiveis > 0) // passou só na 2ª: aprovado na 2ª e adicionado na fila da 1ª
                 {
                     op2.AdicionarSelecionado(c);
                     op1.AdicionarFilaEspera(c);
                     op2.VagasDisponiveis--;
                 }
-                else
+                else // não passou em nenhuma: adicionado na fila das 2
                 {
                     op1.AdicionarFilaEspera(c);
                     op2.AdicionarFilaEspera(c);
