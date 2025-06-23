@@ -54,7 +54,8 @@ namespace TP_AED
             for (Celula i = primeiro.Prox; i != null; i = i.Prox)
                 Console.WriteLine($"{i.Elemento.Nome} {i.Elemento.Media.ToString("n1")} {i.Elemento.OpcoesdeCurso[0]} {i.Elemento.OpcoesdeCurso[1]}");
         }
-        public List<Candidato> CandidatosEmLista()
+        // Soares
+        public List<Candidato> CandidatosEmLista() // Trasforma fila de espera flexível em uma lista para padronização de saída e comandos
         {
             List<Candidato> lista = new List<Candidato>();
             for (Celula i = primeiro.Prox; i != null; i = i.Prox)

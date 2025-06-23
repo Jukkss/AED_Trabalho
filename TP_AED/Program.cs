@@ -62,26 +62,10 @@ namespace TP_AED
                 return null;
             }
         }
-        static void Insercao(Candidato[] candidatos)
-        {
-            for (int i = 1; i < candidatos.Length; i++)
-            {
-                Candidato temp = candidatos[i];
-                int j = i - 1;
-
-                while (j >= 0 &&
-                      (candidatos[j].Media < temp.Media || (candidatos[j].Media == temp.Media && candidatos[j].Notas[0] < temp.Notas[0])
-                      ))
-                {
-                    candidatos[j + 1] = candidatos[j];
-                    j--;
-                }
-                candidatos[j + 1] = temp;
-            }
-        }
         static void PreencherVagas(Candidato[] candidatos, Dictionary<int, Curso> cursosDic)
         {
-            Insercao(candidatos);
+            // Soares
+            Quicksort(candidatos,0,candidatos.Length-1);
 
             foreach (Candidato c in candidatos)
             {
@@ -111,8 +95,52 @@ namespace TP_AED
                 }
             }
         }
+        // Soares
+        static void Quicksort(Candidato[] candidatos, int esq, int dir)
+        {
+            int i = esq, j = dir;
+            Candidato pivo = candidatos[(esq + dir) / 2]; 
+
+            while (i <= j)
+            {
+                while (CompararCandidatos(candidatos[i], pivo) > 0) // i avança até achar um elemento menor que o pivo
+                    i++;
+                while (CompararCandidatos(candidatos[j], pivo) < 0) // j recua até achar um elemento maior que o pivo
+                    j--;
+
+                if (i <= j) // Troca quando i e j param, i (para caso ache um elemento menor que o pivo na esqueda); j (para caso ache um elemento maior que o pivo na direita)
+                {
+                    Trocar(candidatos, i, j); // Troca os elementos
+                    i++;
+                    j--;
+                }
+            }
+
+            if (esq < j)
+                Quicksort(candidatos, esq, j);
+            if (i < dir)
+                Quicksort(candidatos, i, dir);
+        }
+        // Soares
+        static int CompararCandidatos(Candidato a, Candidato b)
+        {
+            int cmpMedia = a.Media.CompareTo(b.Media); // Compara a media de dois candidatos, caso a > b retorna 1; caso a = b retorna 0; caso a < b retorna -1
+            if (cmpMedia != 0) // Caso as medias não sejam iguais, retornam o indice equivalente para a diferença entre os elementos (1 ou -1)
+                return cmpMedia;
+
+            return a.Notas[0].CompareTo(b.Notas[0]); // Com médias iguais, o retorno será do comparativo entre as redações dos candidatos, desempate
+        }
+        // Soares
+        static void Trocar(Candidato[] vet, int i, int j)
+        {
+            Candidato temp = vet[i];
+            vet[i] = vet[j];
+            vet[j] = temp;
+        }
+        // Soares
         static double CalcularNotaDeCorte(List<Candidato> selecionados)
         {
+            // Comando simples para percorrer os selecionados e retornar a menor nota entre eles, independe da quantidade de selecionados
             if (selecionados.Count == 0)
                 return 0.0;
 
@@ -128,20 +156,22 @@ namespace TP_AED
         {
             StreamWriter sw = new StreamWriter("saida.txt", false, Encoding.UTF8);
 
-            foreach (KeyValuePair<int, Curso> keyValuePair in cursosDic)
+            foreach (KeyValuePair<int, Curso> keyValuePair in cursosDic) // Loop para percorrer cada curso pela sua chave
             {
                 Curso curso = keyValuePair.Value;
 
-                List<Candidato> selecionados = curso.ListaSelecionados;
-                List<Candidato> filaEspera = curso.FilaDeEspera.CandidatosEmLista();
+                // Transforma a lista de selecionados em um vetor para percorrer dentro do foreach
+                Candidato[] selecionados = curso.ListaSelecionados.ToArray();
+                Candidato[] filaEspera = curso.FilaDeEspera.CandidatosEmLista().ToArray();
 
-                double notaDeCorte = CalcularNotaDeCorte(selecionados);
-
+                // Calcula nota de corte do curso respectivo
+                double notaDeCorte = CalcularNotaDeCorte(curso.ListaSelecionados);
                 sw.WriteLine($"{curso.Nome} {notaDeCorte.ToString("n1")}");
+
                 sw.WriteLine("Selecionados:");
                 foreach (Candidato c in selecionados)
                     sw.WriteLine($"{c.Nome} {c.Media.ToString("n1")}");
-
+                
                 sw.WriteLine("Fila de Espera:");
                 foreach (Candidato c in filaEspera)
                     sw.WriteLine($"{c.Nome} {c.Media.ToString("n1")}");
