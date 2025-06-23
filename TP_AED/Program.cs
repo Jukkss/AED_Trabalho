@@ -111,7 +111,6 @@ namespace TP_AED
                 }
             }
         }
-        // Soares
         static double CalcularNotaDeCorte(List<Candidato> selecionados)
         {
             if (selecionados.Count == 0)
@@ -125,7 +124,6 @@ namespace TP_AED
             }
             return menorMedia;
         }
-        // Soares
         static void GerarArquivoSaida(Dictionary<int, Curso> cursosDic)
         {
             StreamWriter sw = new StreamWriter("saida.txt", false, Encoding.UTF8);
@@ -173,11 +171,9 @@ namespace TP_AED
                 }
                 Console.WriteLine($"\nFila de Espera:");
                 keyValuePair.Value.FilaDeEspera.Mostrar();
-                // Soares
                 Console.WriteLine($"\nNota de corte: {CalcularNotaDeCorte(keyValuePair.Value.ListaSelecionados).ToString("n1")}");
                 Console.WriteLine("------------------\n");
             }
-            // Soares
             GerarArquivoSaida(cursosDic);
             Console.ReadLine();
         }
